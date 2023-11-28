@@ -1,7 +1,7 @@
 import './App.css';
 import Record from './components/record/Record';
 import RecordForm from './components/recordForm/RecordForm';
-import {React, useState} from 'react'
+import {React, useState, useEffect} from 'react'
 
 
 
@@ -16,6 +16,23 @@ function App() {
   const [incomeTotal, setIncomeTotal] = useState(0);
   // Variável do total de despesas
   const [expenseTotal, setExpenseTotal] = useState(0);
+
+  useEffect(() => {
+    // Recupera os dados armazenados
+    const storagedIncomes = localStorage.getItem('incomes') 
+    const storagedExpenses = localStorage.getItem('expenses') 
+
+    // Verifica se há conteúdo no localStorage
+  if (storagedIncomes) {
+    // Atualiza a lista de tarefas
+    setIncomes(JSON.parse(storagedIncomes));
+  }
+
+  if (storagedExpenses) {
+    // Atualiza a lista de tarefas
+    setExpenses(JSON.parse(storagedExpenses));
+  }
+  }, [])
 
   // Função que adiciona registro na Lista
   const addRecord = (name, value, type, payment)=> {
@@ -33,8 +50,9 @@ function App() {
       // Incrementar a lista de id 
       setId(id + 1)
       //Atualiza a lista oficial com o novo registro
-      setIncomes(newIncomes)
-      console.log(incomes);
+      setIncomes(newIncomes) 
+      //Atualiza o localStorage
+      saveLocalStorage('incomes', newIncomes)
     
 
     }else if(type === 'expense'){
@@ -51,7 +69,8 @@ function App() {
       setId(id + 1)
       //Atualiza a lista oficial com o novo registro
       setExpenses(newExpenses)
-      console.log(expenses);
+      //Atualiza o localStorage
+      saveLocalStorage('expenses', newExpenses)
     }
     
     
@@ -64,16 +83,25 @@ function App() {
       const newIncomes = [...incomes]
       // Retira o item a ser deletado
       const filterIncome = newIncomes.filter( income => income.id !== id? income : null)
+
       setIncomes(filterIncome)
+      saveLocalStorage('incomes', filterIncome)
     }else if(type === 'expense'){
       //Clone da lista
       const newExpenses = [...expenses]
       // Retira o item a ser deletado
       const filterExpenses = newExpenses.filter( income => income.id !== id? income : null)
+
       setExpenses(filterExpenses)
+      saveLocalStorage('expenses', filterExpenses)
     }
   }
 
+  // Função para armazenamento no Local Storage
+  const saveLocalStorage = (key, content)=>{
+  localStorage.setItem(key, JSON.stringify(content))
+
+  } 
 
   
 
@@ -97,7 +125,7 @@ function App() {
       </section>
       <section className='section expense_wrapper'>
       <h1>Despesa</h1>
-      <p>Total: {expenses.reduce((accumulator, record)=> accumulator + record, 0)} </p>
+      <p>Total: {expenses.reduce((accumulator, record)=> accumulator + Number(record.value), 0).toFixed(2)} </p>
       {expenses.map(
         (record) => (
           <Record key={record.id} record={record} removeRecord={removeRecord} />

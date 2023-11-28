@@ -95,8 +95,7 @@ function App() {
 
   // Função para armazenamento no Local Storage
   const saveLocalStorage = (key, content)=>{
-  localStorage.setItem(key, JSON.stringify(content))
-
+    localStorage.setItem(key, JSON.stringify(content))
   } 
 
   
@@ -112,13 +111,14 @@ function App() {
         <h1>Receita</h1>
         <p><strong>R$ {incomes.reduce((accumulator, record)=> accumulator + Number(record.value), 0).toFixed(2)}</strong> </p>
       </span>
+      <div className='incomes_list'>
+        {incomes.map(
+          (record) => (
+            <Record key={record.id} record={record} removeRecord={removeRecord} />
+          )
+        )}
+      </div>
       
-
-      {incomes.map(
-        (record) => (
-          <Record key={record.id} record={record} removeRecord={removeRecord} />
-        )
-      )}
 
       </section>
       <section className='section expense_wrapper'>

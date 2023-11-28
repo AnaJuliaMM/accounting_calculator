@@ -49,18 +49,18 @@ export default function RecordForm({addRecord}) {
             <select id="type" name="type" value={type} onChange={(e) => setType(e.target.value)}>
                 <option value="">Selecione a categoria</option>
                 <option value="income">Receita</option>
-                <option value="expense">Dispesa</option>
+                <option value="expense">Despesa</option>
             </select>
         </div>
         <div className='input_div'>
             <label htmlFor="paymentMethod">Pagamento:</label>
             <select id="paymentMethod" name="paymentMethod" value={payment} onChange={(e) => setPayment(e.target.value)}>
                 <option value="">Método de pagamento</option>
-                <option value="creditCard">Cartão de Crédito</option>
-                <option value="debitCard">Cartão de Débito</option>
-                <option value="pix">Pix</option>
-                <option value="cash">Dinheiro</option>
-                <option value="check">Cheque</option>
+                <option value="Cartão de Crédito">Cartão de Crédito</option>
+                <option value="Cartão de Débito">Cartão de Débito</option>
+                <option value="Pix">Pix</option>
+                <option value="Dinheiro">Dinheiro</option>
+                <option value="Cheque">Cheque</option>
             </select>
         </div>
         <span className='button_wrapper'><button type="submit">Adicionar</button></span>

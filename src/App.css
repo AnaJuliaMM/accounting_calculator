@@ -24,6 +24,8 @@
   align-items: center;
   width: 100%;
 }
-.record_wrapper{
-  background-color: none;
+.incomes_list{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

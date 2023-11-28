@@ -12,10 +12,6 @@ function App() {
   const [expenses, setExpenses] = useState([])
   // Variável que armazena o id das tarefas
   const [id, setId] = useState(0);
-  // Variável do total de receitas
-  const [incomeTotal, setIncomeTotal] = useState(0);
-  // Variável do total de despesas
-  const [expenseTotal, setExpenseTotal] = useState(0);
 
   useEffect(() => {
     // Recupera os dados armazenados
@@ -107,14 +103,16 @@ function App() {
 
   return (
     <div className="App">
-      <section className='section record_wrapper'>
-      <h1>Cadastro</h1>
+    
       <RecordForm addRecord={addRecord}/>
 
-      </section>
+ 
       <section className='section income_wrapper'>
-      <h1>Receita</h1>
-      <p>Total: {incomes.reduce((accumulator, record)=> accumulator + Number(record.value), 0).toFixed(2)} </p>
+      <span className='total'>
+        <h1>Receita</h1>
+        <p><strong>R$ {incomes.reduce((accumulator, record)=> accumulator + Number(record.value), 0).toFixed(2)}</strong> </p>
+      </span>
+      
 
       {incomes.map(
         (record) => (
@@ -124,8 +122,11 @@ function App() {
 
       </section>
       <section className='section expense_wrapper'>
-      <h1>Despesa</h1>
-      <p>Total: {expenses.reduce((accumulator, record)=> accumulator + Number(record.value), 0).toFixed(2)} </p>
+      <span className='total'>
+        <h1>Despesa</h1>
+        <p><strong>R$ {expenses.reduce((accumulator, record)=> accumulator + Number(record.value), 0).toFixed(2)}</strong> </p>
+      </span>
+      
       {expenses.map(
         (record) => (
           <Record key={record.id} record={record} removeRecord={removeRecord} />

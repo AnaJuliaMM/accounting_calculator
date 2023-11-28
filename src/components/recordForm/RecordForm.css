@@ -1,21 +1,48 @@
 form{
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    align-items: center;
+    padding: 5px;
     gap: 5px;
-    border: 1px solid #000;
-
+    border-radius: 5px;
+    background-color: #ed303c;
+    box-shadow: 2px 7px 6px 0px rgba(98, 5, 5, 0.36);
+    color: #fff;
+    border-radius: 15px;
+    width: 30vw;
 }
-span{
+.input_div{
     display: flex;
-    justify-content: space-between;
-    gap: 5px;
+    flex-direction: column;
+    gap:8px;
 }
+
 input, select{
     border-radius: 5px;
-    border: 1px solid #000;
-    width: 20vw;
+    border:none;
+    width: 25vw;
+    height: 5vh;
 }
 .button_wrapper{
     justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+.button_wrapper button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: none;
+    font-size: larger;
+    padding: 10px;
+    box-shadow: 2px 7px 6px 0px rgba(3, 24, 70, 0.36);
+    transition: .3s;
+    cursor: pointer;
+    background-color: rgb(2, 134, 229);
+    color: #fff;
+    font-weight: 600;
+}
+.button_wrapper button:hover{
+    transform: scale(105%);    
 }

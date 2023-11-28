@@ -4,7 +4,7 @@ import './RecordForm.css'
 export default function RecordForm({addRecord}) {
     //Variáveis que representam os dados de entrada
     const [name, setName] = useState('')
-    const [value, setValue] = useState(0.00);
+    const [value, setValue] = useState();
     const [type, setType] = useState('')
     const [payment, setPayment] = useState('')
 
@@ -34,23 +34,25 @@ export default function RecordForm({addRecord}) {
 
   return (
     <form onSubmit={handleSubmission}>
-        <span>
+        <h2>Registro</h2>
+        <div className='input_div'>
             <label htmlFor="name">Nome:</label>
             <input type="text" id="name" name="name"  value={name} onChange={(e) => setName(e.target.value)} />
-        </span>
-        <span>
+        </div>
+            
+        <div className='input_div'>
             <label htmlFor="value">Valor:</label>
             <input type="number"  step="0.01" id="value" name="value" value={value} onChange={(e) => setValue(e.target.value)}/>
-        </span>
-        <span>
+        </div>
+        <div className='input_div'>
             <label htmlFor="type">Tipo:</label>
             <select id="type" name="type" value={type} onChange={(e) => setType(e.target.value)}>
                 <option value="">Selecione a categoria</option>
                 <option value="income">Receita</option>
                 <option value="expense">Dispesa</option>
             </select>
-        </span>
-        <span>
+        </div>
+        <div className='input_div'>
             <label htmlFor="paymentMethod">Pagamento:</label>
             <select id="paymentMethod" name="paymentMethod" value={payment} onChange={(e) => setPayment(e.target.value)}>
                 <option value="">Método de pagamento</option>
@@ -60,7 +62,7 @@ export default function RecordForm({addRecord}) {
                 <option value="cash">Dinheiro</option>
                 <option value="check">Cheque</option>
             </select>
-        </span>
+        </div>
         <span className='button_wrapper'><button type="submit">Adicionar</button></span>
     </form>
   )

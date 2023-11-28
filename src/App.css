@@ -4,13 +4,26 @@
   align-items: start;
   gap: 1vw;
   height: 100vh;
+  padding: 10px;
 }
 .section{
   display: flex;
   flex-direction: column;
-  justify-content:flex-start;
+  justify-content: flex-start;
   align-items: center;
-  height: 100vh;
   width: 30%;
-  border: 1px solid #000;
+  padding: 10px;
+  background-color:#f5634a;
+  border-radius: 10px;
+  color: #ffffff;
+  box-shadow: 2px 7px 6px 0px rgba(1, 72, 58, 0.36); 
+}
+.total{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+.record_wrapper{
+  background-color: none;
 }

@@ -1,0 +1,16 @@
+.record{
+    background-color: #bb79e1;
+    width: 25vw;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #ed303c;
+
+}
+.remove_button{
+    background-color: rgb(228, 27, 8);
+    border: none;
+    border-radius: 5px;
+    color:#fff;
+    cursor: pointer;
+
+}

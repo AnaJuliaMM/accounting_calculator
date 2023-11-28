@@ -1,7 +1,7 @@
 import React from 'react'
 import './Record.css'
 
-export default function Record({record}) {
+export default function Record({record, removeRecord}) {
   return (
     <div>
         <h1>Registro</h1>
@@ -9,7 +9,7 @@ export default function Record({record}) {
         <span>Valor: {record.value}</span>
         <span>Type: {record.type}</span>
         <span>Payment: {record.payment}</span>
-        {/* <button type='button' onClick={()=> removeTask(record.id)}>x</button> */}
+        <button type='button' onClick={()=> removeRecord(record.id, record.type)}>x</button>
     </div>
   )
 }
